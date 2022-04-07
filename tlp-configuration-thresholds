@@ -1,0 +1,34 @@
+# tlp-configuration-thresholds #
+# Intervalle de recharge de la batterie en utilisant tlp
+
+#1/ vérifier si tlp est installé et activé 
+
+tlp-stat -s
+
+#2/ Consult the output of 
+
+tlp-stat -b
+
+# - tlp setcharge validates parameters and configuration and reports errors
+
+# - A value of 0 is translated to the vendor specific default (or the disabled state)
+
+# - If the laptop supports only a stop charge threshold, use START_CHARGE_THRESH = 0
+
+# Go to: /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode 
+# and switch to 1 to enable conservation mode or 0 to disable it
+
+# Go to /etc/tlp.conf, look for # Battery Care -- Charge thresholds and make 
+# under BAT0 (which is the main battery):
+
+START_CHARGE_THRESH_BAT0=0 # 0 because my laptop supports only START_CHARGE_THRESH (verified in the output of tlp-stat -b)
+STOP_CHARGE_THRESH_BAT0=60 # 60 because my lenovo is autoprogrammed to stop charge at 60%
+
+# Finally run: 
+
+tlp setcharge
+
+# For more details consult: https://linrunner.de/tlp/settings/battery.html
+
+# Cheers # 
+

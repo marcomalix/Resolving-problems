@@ -1,0 +1,17 @@
+# Resolving the pamac don't start problem
+# Error message: Process org.manjaro.pamac.manager exited with status 127
+
+# Solution: remove pamac-all & reinstall pamac-gtk
+# How to ?
+
+1/ sudo pacman -R pamac-all
+2/ sudo pacman -R libpamac-full
+3/ sudo pacman -R archlinux-appstream-data-pamac
+4/ yay pamac then choose pamac-gtk, it will install
+                                         archlinux-appstream-data-pamac
+                                         libpamac
+                                         pamac-cli
+                                         pamac-gtk
+
+                                         The job is done.
+

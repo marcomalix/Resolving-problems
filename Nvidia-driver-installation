@@ -1,0 +1,17 @@
+# Steps to setup the Nvidia driver
+# By default the intel graphic card is used, it consums less power (battery) and do the job
+
+
+# Install Nvidia driver (v470.63.1 in my case [Geforce 920MX])
+
+sudo pacman -S nvidia
+
+# PRIME render offload - method to use nvidia card on demand
+
+# 1/ install nvidia-prime
+# 2/ install glxinfo
+
+# To run a program on the NVIDIA card you can use the prime-run script provided by nvidia-prime:
+
+prime-run glxinfo | grep "OpenGL renderer"
+prime-run kdenlive # (any program you want to lunch using nvdia card, in this exemple it's kdenlive)
